@@ -1,5 +1,18 @@
 class HackerLanguage:
-    pass
+    def __init__(self):
+        self.text = ''
+
+    def write(self):
+        pass
+
+    def delete(self, count):
+        self.text = self.text[:-count]
+
+    def send(self):
+        pass
+
+    def read(self):
+        pass
 
 
 if __name__ == '__main__':
