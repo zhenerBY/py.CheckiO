@@ -1,0 +1,23 @@
+type: checkiO
+files:
+- name: mission.py
+  visible: true
+  text: "# feel free to change table structure in any way\n\nTABLE = '''\nA 85-89%\n\
+    A- 80-84%\nB+ 77-79%\nB 73-76%\nB- 70-72%\nC+ 67-69%\nC 63-66%\nC- 60-62%\nD+\
+    \ 57-59%\nD 53-56%\nD- 50-52%\n'''\n\ndef ryerson_letter_grade(pct: int) -> str:\n\
+    \    # your code here\n    return \"A\"\n\n\nif __name__ == '__main__':\n    print(\"\
+    Example:\")\n    print(ryerson_letter_grade(45))\n    \n    # These \"asserts\"\
+    \ are used for self-checking and not for an auto-testing\n    assert ryerson_letter_grade(45)\
+    \ == \"F\"\n    assert ryerson_letter_grade(62) == \"C-\"\n    print(\"Coding\
+    \ complete? Click 'Check' to earn cool rewards!\")\n"
+  learner_created: false
+status: Unchecked
+code: "# feel free to change table structure in any way\n\nTABLE = '''\nA 85-89%\n\
+  A- 80-84%\nB+ 77-79%\nB 73-76%\nB- 70-72%\nC+ 67-69%\nC 63-66%\nC- 60-62%\nD+ 57-59%\n\
+  D 53-56%\nD- 50-52%\n'''\n\ndef ryerson_letter_grade(pct: int) -> str:\n    # your\
+  \ code here\n    return \"A\"\n\n\nif __name__ == '__main__':\n    print(\"Example:\"\
+  )\n    print(ryerson_letter_grade(45))\n    \n    # These \"asserts\" are used for\
+  \ self-checking and not for an auto-testing\n    assert ryerson_letter_grade(45)\
+  \ == \"F\"\n    assert ryerson_letter_grade(62) == \"C-\"\n    print(\"Coding complete?\
+  \ Click 'Check' to earn cool rewards!\")\n"
+seconds_from_change: 9223372036854775807

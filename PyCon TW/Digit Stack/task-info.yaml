@@ -1,0 +1,29 @@
+type: checkiO
+files:
+- name: mission.py
+  visible: true
+  text: "def digit_stack(commands):\n    return 0\n\nif __name__ == '__main__':\n\
+    \    print(\"Example:\")\n    print(digit_stack([\"PUSH 3\", \"POP\", \"POP\"\
+    , \"PUSH 4\", \"PEEK\",\n                        \"PUSH 9\", \"PUSH 0\", \"PEEK\"\
+    , \"POP\", \"PUSH 1\", \"PEEK\"]))\n    \n    #These \"asserts\" using only for\
+    \ self-checking and not necessary for auto-testing\n    assert digit_stack([\"\
+    PUSH 3\", \"POP\", \"POP\", \"PUSH 4\", \"PEEK\",\n                        \"\
+    PUSH 9\", \"PUSH 0\", \"PEEK\", \"POP\", \"PUSH 1\", \"PEEK\"]) == 8, \"Example\"\
+    \n    assert digit_stack([\"POP\", \"POP\"]) == 0, \"pop, pop, zero\"\n    assert\
+    \ digit_stack([\"PUSH 9\", \"PUSH 9\", \"POP\"]) == 9, \"Push the button\"\n \
+    \   assert digit_stack([]) == 0, \"Nothing\"\n    print(\"Coding complete? Click\
+    \ 'Check' to review your tests and earn cool rewards!\");\n"
+  learner_created: false
+status: Unchecked
+code: "def digit_stack(commands):\n    return 0\n\nif __name__ == '__main__':\n  \
+  \  print(\"Example:\")\n    print(digit_stack([\"PUSH 3\", \"POP\", \"POP\", \"\
+  PUSH 4\", \"PEEK\",\n                        \"PUSH 9\", \"PUSH 0\", \"PEEK\", \"\
+  POP\", \"PUSH 1\", \"PEEK\"]))\n    \n    #These \"asserts\" using only for self-checking\
+  \ and not necessary for auto-testing\n    assert digit_stack([\"PUSH 3\", \"POP\"\
+  , \"POP\", \"PUSH 4\", \"PEEK\",\n                        \"PUSH 9\", \"PUSH 0\"\
+  , \"PEEK\", \"POP\", \"PUSH 1\", \"PEEK\"]) == 8, \"Example\"\n    assert digit_stack([\"\
+  POP\", \"POP\"]) == 0, \"pop, pop, zero\"\n    assert digit_stack([\"PUSH 9\", \"\
+  PUSH 9\", \"POP\"]) == 9, \"Push the button\"\n    assert digit_stack([]) == 0,\
+  \ \"Nothing\"\n    print(\"Coding complete? Click 'Check' to review your tests and\
+  \ earn cool rewards!\");\n"
+seconds_from_change: 9223372036854775807

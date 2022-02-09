@@ -1,0 +1,26 @@
+type: checkiO
+files:
+- name: mission.py
+  visible: true
+  text: "from typing import Tuple\n\ndef follow(instructions: str) -> Tuple[int, int]:\n\
+    \    coor = [0,0]\n    for i in instructions:\n        if i == 'f':\n        \
+    \    coor[1] += 1\n        elif i == 'b':\n            coor[1] -= 1\n        elif\
+    \ i == 'r':\n            coor[0] += 1\n        elif i == 'l':\n            coor[0]\
+    \ -= 1\n\n    return (coor[0], coor[1])\n\n\nif __name__ == '__main__':\n    print(\"\
+    Example:\")\n    print(follow(\"fflff\"))\n    \n    # These \"asserts\" are used\
+    \ for self-checking and not for an auto-testing\n    assert follow(\"fflff\")\
+    \ == (-1, 4)\n    assert follow(\"ffrff\") == (1, 4)\n    assert follow(\"fblr\"\
+    ) == (0, 0)\n    print(\"Coding complete? Click 'Check' to earn cool rewards!\"\
+    )\n"
+  learner_created: false
+status: Solved
+code: "from typing import Tuple\n\ndef follow(instructions: str) -> Tuple[int, int]:\n\
+  \    coor = [0,0]\n    for i in instructions:\n        if i == 'f':\n          \
+  \  coor[1] += 1\n        elif i == 'b':\n            coor[1] -= 1\n        elif\
+  \ i == 'r':\n            coor[0] += 1\n        elif i == 'l':\n            coor[0]\
+  \ -= 1\n\n    return (coor[0], coor[1])\n\n\nif __name__ == '__main__':\n    print(\"\
+  Example:\")\n    print(follow(\"fflff\"))\n    \n    # These \"asserts\" are used\
+  \ for self-checking and not for an auto-testing\n    assert follow(\"fflff\") ==\
+  \ (-1, 4)\n    assert follow(\"ffrff\") == (1, 4)\n    assert follow(\"fblr\") ==\
+  \ (0, 0)\n    print(\"Coding complete? Click 'Check' to earn cool rewards!\")\n"
+seconds_from_change: 10367697

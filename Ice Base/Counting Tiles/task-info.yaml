@@ -1,0 +1,29 @@
+type: checkiO
+files:
+- name: mission.py
+  visible: true
+  text: |
+    def checkio(radius):
+        """count tiles"""
+        return [0, 0]
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    if __name__ == '__main__':
+        assert checkio(2) == [4, 12], "N=2"
+        assert checkio(3) == [16, 20], "N=3"
+        assert checkio(2.1) == [4, 20], "N=2.1"
+        assert checkio(2.5) == [12, 20], "N=2.5"
+  learner_created: false
+status: Unchecked
+code: |
+  def checkio(radius):
+      """count tiles"""
+      return [0, 0]
+
+  #These "asserts" using only for self-checking and not necessary for auto-testing
+  if __name__ == '__main__':
+      assert checkio(2) == [4, 12], "N=2"
+      assert checkio(3) == [16, 20], "N=3"
+      assert checkio(2.1) == [4, 20], "N=2.1"
+      assert checkio(2.5) == [12, 20], "N=2.5"
+seconds_from_change: 9223372036854775807

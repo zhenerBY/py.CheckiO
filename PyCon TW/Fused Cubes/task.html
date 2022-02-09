@@ -1,0 +1,59 @@
+<h2>Fused Cubes</h2>
+<p>
+ This is a mission to calculate the volume of objects that combines cubes.
+</p>
+<p>
+ You are given a list of cube details (tuple of 4 integers: X coordinate, Y coordinate, Z coordinate, edge length).
+</p>
+<ul>
+ <li>
+  Each coordinate is the minimum value.
+ </li>
+ <li>
+  All edges parallel to the coordinate axes.
+ </li>
+</ul>
+<p>
+ If the cube share the part of another cube or touch with the face of another cube, 
+    they are considered as one object.
+ <br/>
+ You should return a list (or iterable) of the volumes of all objects.
+</p>
+<div class="for_info_only">
+ <p>
+  <strong>
+   Example:
+  </strong>
+ </p>
+ <pre class="brush: python">sorted(fused_cubes([(0, 0, 0, 3), (1, 2, 2, 3)])) == [52]       # fused
+sorted(fused_cubes([(0, 0, 0, 3), (1, 3, 2, 3)])) == [54]       # touch with faces
+sorted(fused_cubes([(0, 0, 0, 3), (1, 3, 3, 3)])) == [27, 27]   # touch with edges</pre>
+</div>
+<table>
+ <tr>
+  <td>
+   <img alt="example" src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/7c88d3b550264281a95c333e11839af0/example_01.png" style="max-height: 300px" title="example01"/>
+  </td>
+  <td>
+   <img alt="example" src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/7c88d3b550264281a95c333e11839af0/example_02.png" style="max-height: 300px" title="example02"/>
+  </td>
+  <td>
+   <img alt="example" src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/7c88d3b550264281a95c333e11839af0/example_03.png" style="max-height: 300px" title="example03"/>
+  </td>
+ </tr>
+</table>
+<p>
+ <strong>
+  input:
+ </strong>
+ A list of tuples of 4 integers.
+ <p>
+  <strong>
+   output:
+  </strong>
+  A list (or iterable) of integers.
+  <!-- <p><strong>precondition:</strong></p> -->
+ </p>
+</p>
+
+<p><a href="https://py.checkio.org/en/mission/fused-cubes">See the task on CheckiO</a></p>
