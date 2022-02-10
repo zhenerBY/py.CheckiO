@@ -2,17 +2,37 @@ class HackerLanguage:
     def __init__(self):
         self.text = ''
 
-    def write(self):
-        pass
+    def write(self, text):
+        self.text += text
 
     def delete(self, count):
         self.text = self.text[:-count]
 
     def send(self):
-        pass
+        newtext = ''
+        for letter in self.text:
+            if letter.isalpha():
+                newtext += str(bin(ord(letter))[2:])
+            elif letter == ' ':
+                newtext += '1000000'
+            else:
+                newtext += letter
+        return newtext
 
-    def read(self):
-        pass
+    def read(self, text):
+        counter = 0
+        newtext = ''
+        while counter < len(text):
+            if text[counter:counter + 7] == '1000000':
+                newtext += ' '
+                counter += 7
+            elif text[counter:counter + 7].isdigit():
+                newtext += chr(int(text[counter:counter + 7], 2))
+                counter += 7
+            else:
+                newtext += text[counter]
+                counter += 1
+        return newtext
 
 
 if __name__ == '__main__':

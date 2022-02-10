@@ -36,4 +36,4 @@ code: |
       assert verify_anagrams('Hello', 'Ole Oh') == False
       assert verify_anagrams('Kyoto', 'Tokyo') == True
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 10711136
+seconds_from_change: 10817972

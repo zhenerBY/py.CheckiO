@@ -2,30 +2,175 @@ type: checkiO
 files:
 - name: mission.py
   visible: true
-  text: "class MicrowaveBase:\n    pass\n\nclass Microwave1(MicrowaveBase):\n    pass\n\
-    \nclass Microwave2(MicrowaveBase):\n    pass\n\nclass Microwave3(MicrowaveBase):\n\
-    \    pass\n\nclass RemoteControl:\n    pass\n\n\nif __name__ == '__main__':\n\
-    \    #These \"asserts\" using only for self-checking and not necessary for auto-testing\n\
-    \n    microwave_1 = Microwave1()\n    microwave_2 = Microwave2()\n    microwave_3\
-    \ = Microwave3()\n\n    remote_control_1 = RemoteControl(microwave_1)\n    remote_control_1.set_time(\"\
-    01:00\")\n\n    remote_control_2 = RemoteControl(microwave_2)\n    remote_control_2.add_time(\"\
-    90s\")\n    \n    remote_control_3 = RemoteControl(microwave_3)\n    remote_control_3.del_time(\"\
-    300s\")\n    remote_control_3.add_time(\"100s\")\n    \n    assert remote_control_1.show_time()\
-    \ == \"_1:00\"\n    assert remote_control_2.show_time() == \"01:3_\"\n    assert\
-    \ remote_control_3.show_time() == \"01:40\"\n    print(\"Coding complete? Let's\
-    \ try tests!\")\n"
+  text: |
+    from datetime import datetime
+
+
+    class MicrowaveBase:
+        def __init__(self):
+            self.time = 0
+
+        def set_time(self, string):
+            self.time = int(string[:2]) * 60 + int(string[-2:])
+
+        def add_time(self, string):
+            if string[-1] == 's':
+                self.time += int(string[:-1])
+                if self.time > 90 * 60:
+                    self.time = 90 * 60
+            if string[-1] == 'm':
+                self.time += int(string[:-1]) * 60
+                if self.time > 90 * 60:
+                    self.time = 90 * 60
+
+        def del_time(self, string):
+            if string[-1] == 's':
+                self.time -= int(string[:-1])
+                if self.time < 0:
+                    self.time = 0
+            if string[-1] == 'm':
+                self.time -= int(string[:-1]) * 60
+                if self.time < 0:
+                    self.time = 0
+
+        def show_time(self):
+            return str(self.time // 60).rjust(2, '0') + ':' + str(self.time % 60).rjust(2, '0')
+
+
+    class Microwave1(MicrowaveBase):
+        def show_time(self):
+            text = super().show_time()
+            return '_' + text[1:]
+
+
+    class Microwave2(MicrowaveBase):
+        def show_time(self):
+            text = super().show_time()
+            return text[:-1] + '_'
+
+
+    class Microwave3(MicrowaveBase):
+        pass
+
+
+    class RemoteControl:
+        def __init__(self, mw:MicrowaveBase):
+            self.instance = mw
+
+        def set_time(self, string):
+            self.instance.set_time(string)
+
+        def add_time(self, string):
+            self.instance.add_time(string)
+
+        def del_time(self, string):
+            self.instance.del_time(string)
+
+        def show_time(self):
+            return self.instance.show_time()
+
+
+    if __name__ == '__main__':
+        # These "asserts" using only for self-checking and not necessary for auto-testing
+
+        microwave_1 = Microwave1()
+        microwave_2 = Microwave2()
+        microwave_3 = Microwave3()
+
+        remote_control_1 = RemoteControl(microwave_1)
+        remote_control_1.set_time("01:00")
+
+        remote_control_2 = RemoteControl(microwave_2)
+        remote_control_2.add_time("90s")
+
+        remote_control_3 = RemoteControl(microwave_3)
+        remote_control_3.del_time("300s")
+        remote_control_3.add_time("100s")
+
+        assert remote_control_1.show_time() == "_1:00"
+        assert remote_control_2.show_time() == "01:3_"
+        assert remote_control_3.show_time() == "01:40"
+        print("Coding complete? Let's try tests!")
   learner_created: false
-status: Unchecked
-code: "class MicrowaveBase:\n    pass\n\nclass Microwave1(MicrowaveBase):\n    pass\n\
-  \nclass Microwave2(MicrowaveBase):\n    pass\n\nclass Microwave3(MicrowaveBase):\n\
-  \    pass\n\nclass RemoteControl:\n    pass\n\n\nif __name__ == '__main__':\n  \
-  \  #These \"asserts\" using only for self-checking and not necessary for auto-testing\n\
-  \n    microwave_1 = Microwave1()\n    microwave_2 = Microwave2()\n    microwave_3\
-  \ = Microwave3()\n\n    remote_control_1 = RemoteControl(microwave_1)\n    remote_control_1.set_time(\"\
-  01:00\")\n\n    remote_control_2 = RemoteControl(microwave_2)\n    remote_control_2.add_time(\"\
-  90s\")\n    \n    remote_control_3 = RemoteControl(microwave_3)\n    remote_control_3.del_time(\"\
-  300s\")\n    remote_control_3.add_time(\"100s\")\n    \n    assert remote_control_1.show_time()\
-  \ == \"_1:00\"\n    assert remote_control_2.show_time() == \"01:3_\"\n    assert\
-  \ remote_control_3.show_time() == \"01:40\"\n    print(\"Coding complete? Let's\
-  \ try tests!\")\n"
-seconds_from_change: 9223372036854775807
+status: Solved
+code: |
+  from datetime import datetime
+
+
+  class MicrowaveBase:
+      def __init__(self):
+          self.time = 0
+
+      def set_time(self, string):
+          self.time = int(string[:2]) * 60 + int(string[-2:])
+
+      def add_time(self, string):
+          if string[-1] == 's':
+              self.time += int(string[:-1])
+              if self.time > 90 * 60:
+                  self.time = 90 * 60
+          if string[-1] == 'm':
+              self.time += int(string[:-1]) * 60
+              if self.time > 90 * 60:
+                  self.time = 90 * 60
+
+      def del_time(self, string):
+          if string[-1] == 's':
+              self.time -= int(string[:-1])
+              if self.time < 0:
+                  self.time = 0
+          if string[-1] == 'm':
+              self.time -= int(string[:-1]) * 60
+              if self.time < 0:
+                  self.time = 0
+
+      def show_time(self):
+          return str(self.time // 60).rjust(2, '0') + ':' + str(self.time % 60).rjust(2, '0')
+
+
+  class Microwave1(MicrowaveBase):
+      def show_time(self):
+          text = super().show_time()
+          return '_' + text[1:]
+
+
+  class Microwave2(MicrowaveBase):
+      def show_time(self):
+          text = super().show_time()
+          return text[:-1] + '_'
+
+
+  class Microwave3(MicrowaveBase):
+      pass
+
+
+  class RemoteControl:
+      def __init__(self, mw: MicrowaveBase):
+          self.instance = mw
+
+      def __getattr__(self, item):
+          return getattr(self.instance, item)
+
+
+  if __name__ == '__main__':
+      # These "asserts" using only for self-checking and not necessary for auto-testing
+
+      microwave_1 = Microwave1()
+      microwave_2 = Microwave2()
+      microwave_3 = Microwave3()
+
+      remote_control_1 = RemoteControl(microwave_1)
+      remote_control_1.set_time("01:00")
+
+      remote_control_2 = RemoteControl(microwave_2)
+      remote_control_2.add_time("90s")
+
+      remote_control_3 = RemoteControl(microwave_3)
+      remote_control_3.del_time("300s")
+      remote_control_3.add_time("100s")
+
+      assert remote_control_1.show_time() == "_1:00"
+      assert remote_control_2.show_time() == "01:3_"
+      assert remote_control_3.show_time() == "01:40"
+      print("Coding complete? Let's try tests!")
+seconds_from_change: 69

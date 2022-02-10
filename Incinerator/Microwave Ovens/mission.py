@@ -1,13 +1,47 @@
+from datetime import datetime
+
+
 class MicrowaveBase:
-    pass
+    def __init__(self):
+        self.time = 0
+
+    def set_time(self, string):
+        self.time = int(string[:2]) * 60 + int(string[-2:])
+
+    def add_time(self, string):
+        if string[-1] == 's':
+            self.time += int(string[:-1])
+            if self.time > 90 * 60:
+                self.time = 90 * 60
+        if string[-1] == 'm':
+            self.time += int(string[:-1]) * 60
+            if self.time > 90 * 60:
+                self.time = 90 * 60
+
+    def del_time(self, string):
+        if string[-1] == 's':
+            self.time -= int(string[:-1])
+            if self.time < 0:
+                self.time = 0
+        if string[-1] == 'm':
+            self.time -= int(string[:-1]) * 60
+            if self.time < 0:
+                self.time = 0
+
+    def show_time(self):
+        return str(self.time // 60).rjust(2, '0') + ':' + str(self.time % 60).rjust(2, '0')
 
 
 class Microwave1(MicrowaveBase):
-    pass
+    def show_time(self):
+        text = super().show_time()
+        return '_' + text[1:]
 
 
 class Microwave2(MicrowaveBase):
-    pass
+    def show_time(self):
+        text = super().show_time()
+        return text[:-1] + '_'
 
 
 class Microwave3(MicrowaveBase):
@@ -15,7 +49,11 @@ class Microwave3(MicrowaveBase):
 
 
 class RemoteControl:
-    pass
+    def __init__(self, mw: MicrowaveBase):
+        self.instance = mw
+
+    def __getattr__(self, item):
+        return getattr(self.instance, item)
 
 
 if __name__ == '__main__':

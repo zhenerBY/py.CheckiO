@@ -286,4 +286,4 @@ code: |
       assert figure.volume() == 1000
 
       print("Coding complete? Let's try tests!")
-seconds_from_change: 513
+seconds_from_change: 107349
