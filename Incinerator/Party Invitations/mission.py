@@ -1,9 +1,27 @@
 class Friend:
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.invite = 'No party...'
+
+    def show_invite(self):
+        return self.invite
+
 
 
 class Party:
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.friends = []
+
+    def add_friend(self, friend: Friend):
+        self.friends.append(friend)
+
+    def del_friend(self, friend: Friend):
+        self.friends.remove(friend)
+
+    def send_invites(self, text):
+        for friend in self.friends:
+            friend.invite = self.name + ': ' + text
 
 
 if __name__ == '__main__':

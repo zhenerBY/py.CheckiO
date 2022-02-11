@@ -106,4 +106,4 @@ code: |
       assert p1.money() == "648 000", "Money"
       assert p2.home() == "Lives in Vienna, Austria", "Home"
       print("Coding complete? Let's try tests!")
-seconds_from_change: 174241
+seconds_from_change: 250259
