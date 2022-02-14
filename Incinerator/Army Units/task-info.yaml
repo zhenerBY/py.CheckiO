@@ -202,4 +202,4 @@ code: |
       assert soldier_6.introduce() == "Shinobi Kirigae, Asian archer"
 
       print("Coding complete? Let's try tests!")
-seconds_from_change: 610392
+seconds_from_change: 877815

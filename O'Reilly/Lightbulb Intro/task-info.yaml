@@ -122,4 +122,4 @@ code: |
       ]) == 86410
 
       print("The first mission in series is completed? Click 'Check' to earn cool rewards!")
-seconds_from_change: 1294722
+seconds_from_change: 1562145

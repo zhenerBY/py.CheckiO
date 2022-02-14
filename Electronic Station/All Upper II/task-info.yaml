@@ -44,4 +44,4 @@ code: |
       assert is_all_upper('mixed UPPER and lower') == False
       assert is_all_upper('') == False
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 11838668
+seconds_from_change: 12106091

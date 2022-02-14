@@ -1,9 +1,35 @@
 class Text:
-    pass
+    def __init__(self, text='', font=None):
+        self.text = text
+        self.font = font
+
+    def write(self, text):
+        self.text += text
+
+    def set_font(self, font):
+        self.font = font
+
+    def show(self):
+        if self.font is None:
+            return self.text
+        return f'[{self.font}]{self.text}[{self.font}]'
+
+    def restore(self, saved):
+        self.text = saved[0]
+        self.font = saved[1]
 
 
 class SavedText:
-    pass
+    def __init__(self):
+        self.counter = 0
+        self.mem = {}
+
+    def save_text(self, text: Text):
+        self.mem[self.counter] = [text.text, text.font]
+        self.counter += 1
+
+    def get_version(self, number):
+        return self.mem[number]
 
 
 if __name__ == '__main__':

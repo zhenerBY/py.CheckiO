@@ -22,4 +22,4 @@ code: "def checkio(number: int) -> int:\n    for i in str(number).split():\n    
   \    assert checkio(123405) == 120\n    assert checkio(999) == 729\n    assert checkio(1000)\
   \ == 1\n    assert checkio(1111) == 1\n    print(\"Coding complete? Click 'Check'\
   \ to review your tests and earn cool rewards!\")\n"
-seconds_from_change: 11843433
+seconds_from_change: 12110856

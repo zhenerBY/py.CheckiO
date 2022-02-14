@@ -1,5 +1,28 @@
 class VoiceCommand:
-    pass
+    def __init__(self, channels: list):
+        self.channels = channels
+        self._position = 0
+
+    def first_channel(self):
+        pass
+
+    def last_channel(self):
+        pass
+
+    def turn_channe(self, n):
+        pass
+
+    def next_channel(self):
+        pass
+
+    def previous_channel(self):
+        pass
+
+    def current_channel(self):
+        pass
+
+    def is_exist(self, n):
+        pass
 
 
 if __name__ == '__main__':
