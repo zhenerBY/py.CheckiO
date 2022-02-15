@@ -1,0 +1,101 @@
+<h2>Mind Switcher</h2>
+<div class="story">
+ <img src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/4f3ec787dd9b4f43aecf916ea9389d36/Prisoner_of_Benda_Theorem_on_Chalkboard.png" style="float: left; margin: 0 10px 0 10px;" width="300px"/>
+ <div style="padding: 10px">
+  <p>
+   - Oh no! Is it possible to get everyone back to normal using four or more bodies?
+  </p>
+  <p>
+   - I'm not sure. I'm afraid we need to use...
+   <strong>
+    <a href="http://en.wikipedia.org/wiki/The_Prisoner_of_Benda#The_theorem">
+     MATH
+    </a>
+   </strong>
+   .
+  </p>
+  <p style="float: right; font-style: normal; font-size: 12px">
+   "Futurama" - Season 6 Episode 10 - "The Prisoner of
+            Benda"
+  </p>
+ </div>
+ <div style="clear: both">
+ </div>
+</div>
+<p>
+ Sophia's drones are simple robots which do dangerous work.
+    Just in case one breaks, Sophia has a backup machine for these drones.
+    This machine can copy a robots mind and has a secret and undocumented function.
+    The backup machine can also operate as a mind switcher for robots.
+</p>
+<p>
+ Sophia forgot to turn off the machine and left the drones in the same room.
+    When she had returned some drones already swapped their minds with each other.
+    We should help them to return to their original bodies as their current state voids the manufacturer warranty.
+</p>
+<p>
+ We have a log from the machine, of which drones minds were swapped.
+    There is however one slight problem - no pair of bodies can swap minds more than once.
+    However, with two additional bodies we can return the switching chaos back to a normal state of things.
+    Nikola and Sophia have offered to help us ("nikola" and "sophia").
+</p>
+<p>
+ You are given an array with with information about the recent swaps.
+    Each entry is a set with two names of robots (bodies).
+    You can operate with bodies which were written in the journal and with two additional bodies - "nikola" and
+    "sophia".
+    Find the sequence of the swaps required to return all minds to their original bodies.
+    The result should be represented as a list/tuple of sets with two names in each.
+</p>
+<p>
+ <strong>
+  Input:
+ </strong>
+ A journal as a tuple of sets. Each set contains two strings.
+</p>
+<p>
+ <strong>
+  Output:
+ </strong>
+ The sequence of actions as a list/tuple of sets. Each set contains two strings.
+</p>
+<div class="for_info_only">
+ <p>
+  <strong>
+   Example:
+  </strong>
+ </p>
+ <pre class="brush: python">
+mind_switcher(({"scout", "super"},)) == ({"super", "nikola"}, {"sophia", "scout"},
+                                         {"nikola", "scout"}, {"sophia", "super"},
+                                         {"nikola", "sophia"})
+
+    </pre>
+</div>
+<p class="for_info_only">
+ <strong>
+  How it is used:
+ </strong>
+ The theorem from this mission is based on group theory.
+    And group theory has application in cryptography, physics and chemistry.
+</p>
+<p>
+ <strong>
+  Precondition:
+ </strong>
+ <br/>
+ 0 &lt; len(journal) ≤ 55
+ <br/>
+ <strong>
+  Journal
+ </strong>
+ is correct.
+</p>
+<p>
+ <strong>
+  Sources:
+ </strong>
+ Cohen, David (2010). Futurama volume 5 DVD episode 10 "The Prisoner of Benda" (DVD). 20th Century Fox.
+</p>
+
+<p><a href="https://py.checkio.org/en/mission/mind-switcher">See the task on CheckiO</a></p>

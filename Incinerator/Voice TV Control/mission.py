@@ -1,28 +1,35 @@
 class VoiceCommand:
     def __init__(self, channels: list):
         self.channels = channels
-        self._position = 0
+        self._position = 1
 
     def first_channel(self):
-        pass
+        self._position = 1
+        return self.current_channel()
 
     def last_channel(self):
-        pass
+        self._position = len(self.channels)
+        return self.current_channel()
 
-    def turn_channe(self, n):
-        pass
+    def turn_channel(self, n):
+        self._position = n
+        return self.current_channel()
 
     def next_channel(self):
-        pass
+        self._position = self._position + 1 if self._position < len(self.channels) else 1
+        return self.current_channel()
 
     def previous_channel(self):
-        pass
+        self._position = self._position - 1 if self._position > 2 else len(self.channels)
+        return self.current_channel()
 
     def current_channel(self):
-        pass
+        return self.channels[self._position - 1]
 
     def is_exist(self, n):
-        pass
+        if n in self.channels:
+            return 'Yes'
+        return 'No'
 
 
 if __name__ == '__main__':

@@ -2,61 +2,252 @@ type: checkiO
 files:
 - name: mission.py
   visible: true
-  text: "# Taken from mission The Warriors\n\nclass Warrior:\n\n    def __init__(self):\n\
-    \        self.health = 50\n        self.attack = 5\n\n    @property\n    def is_alive(self):\n\
-    \        return True if self.health > 0 else False\n\n\nclass Knight(Warrior):\n\
-    \n    def __init__(self):\n        super().__init__()\n        self.attack = 7\n\
-    \n\ndef fight(unit_1, unit_2):\n    while unit_1.is_alive and unit_2.is_alive:\n\
-    \        unit_2.health -= unit_1.attack\n        if unit_2.is_alive:\n       \
-    \     unit_1.health -= unit_2.attack\n        else:\n            return True\n\
-    \    return False\n\n\nif __name__ == '__main__':\n    # These \"asserts\" using\
-    \ only for self-checking and not necessary for auto-testing\n\n    chuck = Warrior()\n\
-    \    bruce = Warrior()\n    carl = Knight()\n    dave = Warrior()\n    mark =\
-    \ Warrior()\n\n    assert fight(chuck, bruce) == True\n    assert fight(dave,\
-    \ carl) == False\n    assert chuck.is_alive == True\n    assert bruce.is_alive\
-    \ == False\n    assert carl.is_alive == True\n    assert dave.is_alive == False\n\
-    \    assert fight(carl, mark) == False\n    assert carl.is_alive == False\n\n\
-    \    print(\"Coding complete? Let's try tests!\")\n\n\nif __name__ == '__main__':\n\
-    \    #These \"asserts\" using only for self-checking and not necessary for auto-testing\n\
-    \    \n    #fight tests\n    chuck = Warrior()\n    bruce = Warrior()\n    carl\
-    \ = Knight()\n    dave = Warrior()\n    mark = Warrior()\n\n    assert fight(chuck,\
-    \ bruce) == True\n    assert fight(dave, carl) == False\n    assert chuck.is_alive\
-    \ == True\n    assert bruce.is_alive == False\n    assert carl.is_alive == True\n\
-    \    assert dave.is_alive == False\n    assert fight(carl, mark) == False\n  \
-    \  assert carl.is_alive == False\n\n    #battle tests\n    my_army = Army()\n\
-    \    my_army.add_units(Knight, 3)\n    \n    enemy_army = Army()\n    enemy_army.add_units(Warrior,\
-    \ 3)\n\n    army_3 = Army()\n    army_3.add_units(Warrior, 20)\n    army_3.add_units(Knight,\
-    \ 5)\n    \n    army_4 = Army()\n    army_4.add_units(Warrior, 30)\n\n    battle\
-    \ = Battle()\n\n    assert battle.fight(my_army, enemy_army) == True\n    assert\
-    \ battle.fight(army_3, army_4) == False\n    print(\"Coding complete? Let's try\
-    \ tests!\")\n"
+  text: |
+    # Taken from mission The Warriors
+
+    class Warrior:
+
+        def __init__(self):
+            self.health = 50
+            self.attack = 5
+
+        @property
+        def is_alive(self):
+            return True if self.health > 0 else False
+
+
+    class Knight(Warrior):
+
+        def __init__(self):
+            super().__init__()
+            self.attack = 7
+
+
+    def fight(unit_1, unit_2):
+        while unit_1.is_alive and unit_2.is_alive:
+            unit_2.health -= unit_1.attack
+            if unit_2.is_alive:
+                unit_1.health -= unit_2.attack
+            else:
+                return True
+        return False
+
+
+    class Army:
+        def __init__(self):
+            self.units = []
+
+        def add_units(self, warrior: Warrior, amount):
+            for i in range(amount):
+                self.units.append(warrior())
+
+
+    class Battle:
+        def __init__(self):
+            self.army1 = None
+            self.army2 = None
+
+        def fight(self, army1: Army, army2: Army):
+            self.army1 = army1
+            self.army2 = army2
+            current_warrior_army1 = 0
+            current_warrior_army2 = 0
+            while current_warrior_army1 <= len(self.army1.units) - 1:
+                while self.army1.units[current_warrior_army1].is_alive and self.army2.units[current_warrior_army2].is_alive:
+                    self.army2.units[current_warrior_army2].health -= self.army1.units[current_warrior_army1].attack
+                    if self.army2.units[current_warrior_army2].is_alive:
+                        self.army1.units[current_warrior_army1].health -= self.army2.units[current_warrior_army2].attack
+                    else:
+                        if current_warrior_army2 < len(self.army2.units) - 1:
+                            current_warrior_army2 += 1
+                        else:
+                            return True
+                if current_warrior_army1 < len(self.army1.units) - 1:
+                    current_warrior_army1 += 1
+                else:
+                    return False
+
+
+
+    if __name__ == '__main__':
+        # These "asserts" using only for self-checking and not necessary for auto-testing
+
+        chuck = Warrior()
+        bruce = Warrior()
+        carl = Knight()
+        dave = Warrior()
+        mark = Warrior()
+
+        assert fight(chuck, bruce) == True
+        assert fight(dave, carl) == False
+        assert chuck.is_alive == True
+        assert bruce.is_alive == False
+        assert carl.is_alive == True
+        assert dave.is_alive == False
+        assert fight(carl, mark) == False
+        assert carl.is_alive == False
+
+        print("Coding complete? Let's try tests!")
+
+    if __name__ == '__main__':
+        # These "asserts" using only for self-checking and not necessary for auto-testing
+
+        # fight tests
+        chuck = Warrior()
+        bruce = Warrior()
+        carl = Knight()
+        dave = Warrior()
+        mark = Warrior()
+
+        assert fight(chuck, bruce) == True
+        assert fight(dave, carl) == False
+        assert chuck.is_alive == True
+        assert bruce.is_alive == False
+        assert carl.is_alive == True
+        assert dave.is_alive == False
+        assert fight(carl, mark) == False
+        assert carl.is_alive == False
+
+        # battle tests
+        my_army = Army()
+        my_army.add_units(Knight, 3)
+
+        enemy_army = Army()
+        enemy_army.add_units(Warrior, 3)
+
+        army_3 = Army()
+        army_3.add_units(Warrior, 20)
+        army_3.add_units(Knight, 5)
+
+        army_4 = Army()
+        army_4.add_units(Warrior, 30)
+
+        battle = Battle()
+
+        assert battle.fight(my_army, enemy_army) == True
+        assert battle.fight(army_3, army_4) == False
+        print("Coding complete? Let's try tests!")
   learner_created: false
-status: Unchecked
-code: "# Taken from mission The Warriors\n\nclass Warrior:\n\n    def __init__(self):\n\
-  \        self.health = 50\n        self.attack = 5\n\n    @property\n    def is_alive(self):\n\
-  \        return True if self.health > 0 else False\n\n\nclass Knight(Warrior):\n\
-  \n    def __init__(self):\n        super().__init__()\n        self.attack = 7\n\
-  \n\ndef fight(unit_1, unit_2):\n    while unit_1.is_alive and unit_2.is_alive:\n\
-  \        unit_2.health -= unit_1.attack\n        if unit_2.is_alive:\n         \
-  \   unit_1.health -= unit_2.attack\n        else:\n            return True\n   \
-  \ return False\n\n\nif __name__ == '__main__':\n    # These \"asserts\" using only\
-  \ for self-checking and not necessary for auto-testing\n\n    chuck = Warrior()\n\
-  \    bruce = Warrior()\n    carl = Knight()\n    dave = Warrior()\n    mark = Warrior()\n\
-  \n    assert fight(chuck, bruce) == True\n    assert fight(dave, carl) == False\n\
-  \    assert chuck.is_alive == True\n    assert bruce.is_alive == False\n    assert\
-  \ carl.is_alive == True\n    assert dave.is_alive == False\n    assert fight(carl,\
-  \ mark) == False\n    assert carl.is_alive == False\n\n    print(\"Coding complete?\
-  \ Let's try tests!\")\n\n\nif __name__ == '__main__':\n    #These \"asserts\" using\
-  \ only for self-checking and not necessary for auto-testing\n    \n    #fight tests\n\
-  \    chuck = Warrior()\n    bruce = Warrior()\n    carl = Knight()\n    dave = Warrior()\n\
-  \    mark = Warrior()\n\n    assert fight(chuck, bruce) == True\n    assert fight(dave,\
-  \ carl) == False\n    assert chuck.is_alive == True\n    assert bruce.is_alive ==\
-  \ False\n    assert carl.is_alive == True\n    assert dave.is_alive == False\n \
-  \   assert fight(carl, mark) == False\n    assert carl.is_alive == False\n\n   \
-  \ #battle tests\n    my_army = Army()\n    my_army.add_units(Knight, 3)\n    \n\
-  \    enemy_army = Army()\n    enemy_army.add_units(Warrior, 3)\n\n    army_3 = Army()\n\
-  \    army_3.add_units(Warrior, 20)\n    army_3.add_units(Knight, 5)\n    \n    army_4\
-  \ = Army()\n    army_4.add_units(Warrior, 30)\n\n    battle = Battle()\n\n    assert\
-  \ battle.fight(my_army, enemy_army) == True\n    assert battle.fight(army_3, army_4)\
-  \ == False\n    print(\"Coding complete? Let's try tests!\")\n"
-seconds_from_change: 9223372036854775807
+status: Solved
+code: |
+  # Taken from mission The Warriors
+
+  class Warrior:
+
+      def __init__(self):
+          self.health = 50
+          self.attack = 5
+
+      @property
+      def is_alive(self):
+          return True if self.health > 0 else False
+
+
+  class Knight(Warrior):
+
+      def __init__(self):
+          super().__init__()
+          self.attack = 7
+
+
+  def fight(unit_1, unit_2):
+      while unit_1.is_alive and unit_2.is_alive:
+          unit_2.health -= unit_1.attack
+          if unit_2.is_alive:
+              unit_1.health -= unit_2.attack
+          else:
+              return True
+      return False
+
+
+  class Army:
+      def __init__(self):
+          self.units = []
+
+      def add_units(self, warrior: Warrior, amount):
+          for i in range(amount):
+              self.units.append(warrior())
+
+      def kill_unit(self):
+          self.units.pop(0)
+
+
+  class Battle:
+      def __init__(self):
+          self.army1 = None
+          self.army2 = None
+
+      def fight(self, army1: Army, army2: Army):
+          self.army1 = army1
+          self.army2 = army2
+          while True:
+              if fight(self.army1.units[0], self.army2.units[0]):
+                  self.army2.kill_unit()
+              else:
+                  self.army1.kill_unit()
+              if len(self.army1.units) == 0:
+                  return False
+              if len(self.army2.units) == 0:
+                  return True
+
+
+
+  if __name__ == '__main__':
+      # These "asserts" using only for self-checking and not necessary for auto-testing
+
+      chuck = Warrior()
+      bruce = Warrior()
+      carl = Knight()
+      dave = Warrior()
+      mark = Warrior()
+
+      assert fight(chuck, bruce) == True
+      assert fight(dave, carl) == False
+      assert chuck.is_alive == True
+      assert bruce.is_alive == False
+      assert carl.is_alive == True
+      assert dave.is_alive == False
+      assert fight(carl, mark) == False
+      assert carl.is_alive == False
+
+      print("Coding complete? Let's try tests!")
+
+  if __name__ == '__main__':
+      # These "asserts" using only for self-checking and not necessary for auto-testing
+
+      # fight tests
+      chuck = Warrior()
+      bruce = Warrior()
+      carl = Knight()
+      dave = Warrior()
+      mark = Warrior()
+
+      assert fight(chuck, bruce) == True
+      assert fight(dave, carl) == False
+      assert chuck.is_alive == True
+      assert bruce.is_alive == False
+      assert carl.is_alive == True
+      assert dave.is_alive == False
+      assert fight(carl, mark) == False
+      assert carl.is_alive == False
+
+      # battle tests
+      my_army = Army()
+      my_army.add_units(Knight, 3)
+
+      enemy_army = Army()
+      enemy_army.add_units(Warrior, 3)
+
+      army_3 = Army()
+      army_3.add_units(Warrior, 20)
+      army_3.add_units(Knight, 5)
+
+      army_4 = Army()
+      army_4.add_units(Warrior, 30)
+
+      battle = Battle()
+
+      assert battle.fight(my_army, enemy_army) == True
+      assert battle.fight(army_3, army_4) == False
+      print("Coding complete? Let's try tests!")
+seconds_from_change: 2977
