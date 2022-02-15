@@ -1,3 +1,5 @@
+# Taken from mission The Lancers
+
 # Taken from mission The Vampires
 
 # Taken from mission The Defenders
@@ -9,6 +11,7 @@
 class Warrior:
 
     def __init__(self):
+        self.maxhealth = 50
         self.health = 50
         self.attack = 5
         self.defense = 0
@@ -31,6 +34,7 @@ class Defender(Warrior):
 
     def __init__(self):
         super().__init__()
+        self.maxhealth = 60
         self.health = 60
         self.attack = 3
         self.defense = 2
@@ -39,6 +43,7 @@ class Defender(Warrior):
 class Rookie(Warrior):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.maxhealth = 50
         self.health = 50
         self.attack = 1
 
@@ -46,6 +51,7 @@ class Rookie(Warrior):
 class Vampire(Warrior):
     def __init__(self):
         super().__init__()
+        self.maxhealth = 40
         self.health = 40
         self.attack = 4
         self.vampirism = 50
@@ -54,28 +60,52 @@ class Vampire(Warrior):
 class Lancer(Warrior):
     def __init__(self):
         super().__init__()
+        self.maxhealth = 50
         self.health = 50
         self.attack = 6
         self.secondattack = 3
 
 
+class Healer(Warrior):
+    def __init__(self):
+        super().__init__()
+        self.maxhealth = 60
+        self.health = 60
+        self.attack = 0
+
+    def heal(self, warrior: Warrior):
+        if warrior.health <= 0:
+            pass
+        elif warrior.health + 2 <= warrior.maxhealth:
+            warrior.health += 2
+        else:
+            warrior.health = warrior.maxhealth
+
+
 def fight(unit_1, unit_2, unit_1_2=Warrior(), unit_2_2=Warrior()):
-    while unit_1.is_alive and unit_2.is_alive:
+    # while unit_1.is_alive and unit_2.is_alive:
+    while True:
         damage = (unit_1.attack - unit_2.defense) if (unit_1.attack - unit_2.defense) > 0 else 0
         seconddamage = (unit_1.secondattack - unit_2_2.defense) if (unit_1.secondattack - unit_2_2.defense) > 0 else 0
         unit_2.health -= damage
+        if isinstance(unit_2_2, Healer):
+            unit_2_2.heal(unit_2)
         unit_2_2.health -= seconddamage
         unit_1.health += damage * unit_1.vampirism / 100
         if unit_2.is_alive:
             damage = (unit_2.attack - unit_1.defense) if (unit_2.attack - unit_1.defense) > 0 else 0
-            seconddamage = (unit_2.secondattack - unit_1_2.defense) if (
-                                                                                   unit_2.secondattack - unit_1_2.defense) > 0 else 0
+            seconddamage = (unit_2.secondattack - unit_1_2.defense) if (unit_2.secondattack - unit_1_2.defense) > 0 else 0
             unit_1.health -= damage
+            if isinstance(unit_1_2, Healer):
+                unit_1_2.heal(unit_1)
             unit_1_2.health -= seconddamage
             unit_2.health += damage * unit_2.vampirism / 100
         else:
+            if isinstance(unit_1_2, Healer):
+                unit_1_2.heal(unit_1)
             return True
-    return False
+        if not unit_1.is_alive:
+            return False
 
 
 class Army:
@@ -339,4 +369,78 @@ if __name__ == '__main__':
 
     assert battle.fight(my_army, enemy_army) == True
     assert battle.fight(army_3, army_4) == False
+    print("Coding complete? Let's try tests!")
+
+if __name__ == '__main__':
+    # These "asserts" using only for self-checking and not necessary for auto-testing
+
+    # fight tests
+    chuck = Warrior()
+    bruce = Warrior()
+    carl = Knight()
+    dave = Warrior()
+    mark = Warrior()
+    bob = Defender()
+    mike = Knight()
+    rog = Warrior()
+    lancelot = Defender()
+    eric = Vampire()
+    adam = Vampire()
+    richard = Defender()
+    ogre = Warrior()
+    freelancer = Lancer()
+    vampire = Vampire()
+    priest = Healer()
+
+    assert fight(chuck, bruce) == True
+    assert fight(dave, carl) == False
+    assert chuck.is_alive == True
+    assert bruce.is_alive == False
+    assert carl.is_alive == True
+    assert dave.is_alive == False
+    assert fight(carl, mark) == False
+    assert carl.is_alive == False
+    assert fight(bob, mike) == False
+    assert fight(lancelot, rog) == True
+    assert fight(eric, richard) == False
+    assert fight(ogre, adam) == True
+    assert fight(freelancer, vampire) == True
+    assert freelancer.is_alive == True
+    assert freelancer.health == 14
+    priest.heal(freelancer)
+    assert freelancer.health == 16
+
+    # battle tests
+    my_army = Army()
+    my_army.add_units(Defender, 2)
+    my_army.add_units(Healer, 1)
+    my_army.add_units(Vampire, 2)
+    my_army.add_units(Lancer, 2)
+    my_army.add_units(Healer, 1)
+    my_army.add_units(Warrior, 1)
+
+    enemy_army = Army()
+    enemy_army.add_units(Warrior, 2)
+    enemy_army.add_units(Lancer, 4)
+    enemy_army.add_units(Healer, 1)
+    enemy_army.add_units(Defender, 2)
+    enemy_army.add_units(Vampire, 3)
+    enemy_army.add_units(Healer, 1)
+
+    army_3 = Army()
+    army_3.add_units(Warrior, 1)
+    army_3.add_units(Lancer, 1)
+    army_3.add_units(Healer, 1)
+    army_3.add_units(Defender, 2)
+
+    army_4 = Army()
+    army_4.add_units(Vampire, 3)
+    army_4.add_units(Warrior, 1)
+    army_4.add_units(Healer, 1)
+    army_4.add_units(Lancer, 2)
+
+    battle = Battle()
+
+    assert battle.fight(my_army, enemy_army) == False
+    assert battle.fight(army_3, army_4) == True
     print("Coding complete? Let's try tests!")

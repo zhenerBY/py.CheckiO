@@ -66,4 +66,4 @@ code: |
       assert is_acceptable_password("muchlonger5") == True
       assert is_acceptable_password("sh5") == False
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 12179686
+seconds_from_change: 12192848

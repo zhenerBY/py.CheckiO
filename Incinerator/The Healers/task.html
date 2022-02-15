@@ -1,0 +1,131 @@
+<h2>The Healers</h2>
+<img class="for_info_only half" src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/2f54230f16174967998f764bb54b9b89/title.png" style="float:left; max-height: 400px; margin-right: 10px"/>
+<div class="story for_info_only">
+ ...the balance of power was once again not on the knights’ side.
+ <br/>
+ Sir Ronald used the horn one more time to summon the last hope for his army - the healers. The temple they lived in was even closer than the castle from which the first wave of reinforcements arrived. If the healers get here fast enough, they’ll save many lives and the knights will have a chance to win.
+</div>
+<p>
+ The battle continues and each army is losing good warriors. Let's try to fix that and add a new unit type - the Healer.
+ <br/>
+ Healer won't be fighting (his attack = 0, so he can't deal the damage). But his role is also very important - every time the allied soldier hits the enemy, the Healer will heal the allie, standing right in front of him by +2 health points with the
+ <strong>
+  heal()
+ </strong>
+ method. Note that the health after healing can't be greater than the maximum health of the unit.
+For example, if the Healer heals the Warrior with 49 health points, the Warrior will have 50 hp, because this is the maximum for him.
+ <br/>
+ The basic parameters of the Healer:
+ <br/>
+ health = 60
+ <br/>
+ attack = 0
+ <br/>
+</p>
+<p class="for_info_only" style="text-align: center;">
+ <img alt="example" src="https://d17mnqrx9pmt3e.cloudfront.net/media/missions/media/2f54230f16174967998f764bb54b9b89/healing_process.png" style="max-height: 800px" title="fight"/>
+</p>
+<div class="for_info_only">
+ <p>
+  <strong>
+   Example
+  </strong>
+  :
+  <pre class="brush: python">
+chuck = Warrior()
+bruce = Warrior()
+carl = Knight()
+dave = Warrior()
+mark = Warrior()
+bob = Defender()
+mike = Knight()
+rog = Warrior()
+lancelot = Defender()
+eric = Vampire()
+adam = Vampire()
+richard = Defender()
+ogre = Warrior()
+freelancer = Lancer()
+vampire = Vampire()
+priest = Healer()
+
+fight(chuck, bruce) == True
+fight(dave, carl) == False
+chuck.is_alive == True
+bruce.is_alive == False
+carl.is_alive == True
+dave.is_alive == False
+fight(carl, mark) == False
+carl.is_alive == False
+fight(bob, mike) == False
+fight(lancelot, rog) == True
+fight(eric, richard) == False
+fight(ogre, adam) == True
+fight(freelancer, vampire) == True
+freelancer.is_alive == True
+freelancer.health == 14    
+priest.heal(freelancer)
+freelancer.health == 16
+
+my_army = Army()
+my_army.add_units(Defender, 2)
+my_army.add_units(Healer, 1)
+my_army.add_units(Vampire, 2)
+my_army.add_units(Lancer, 2)
+my_army.add_units(Healer, 1)
+my_army.add_units(Warrior, 1)
+    
+enemy_army = Army()
+enemy_army.add_units(Warrior, 2)
+enemy_army.add_units(Lancer, 4)
+enemy_army.add_units(Healer, 1)
+enemy_army.add_units(Defender, 2)
+enemy_army.add_units(Vampire, 3)
+enemy_army.add_units(Healer, 1)
+
+army_3 = Army()
+army_3.add_units(Warrior, 1)
+army_3.add_units(Lancer, 1)
+army_3.add_units(Healer, 1)
+army_3.add_units(Defender, 2)
+
+army_4 = Army()
+army_4.add_units(Vampire, 3)
+army_4.add_units(Warrior, 1)
+army_4.add_units(Healer, 1)
+army_4.add_units(Lancer, 2)
+
+battle = Battle()
+
+battle.fight(my_army, enemy_army) == False
+battle.fight(army_3, army_4) == True
+</pre>
+ </p>
+</div>
+<p>
+ <strong>
+  Input:
+ </strong>
+ The warriors and armies.
+</p>
+<p>
+ <strong>
+  Output:
+ </strong>
+ The result of the battle (True or False).
+</p>
+<p class="for_info_only">
+ <strong>
+  How it is used:
+ </strong>
+ For computer games development.
+</p>
+<p>
+ <strong>
+  Precondition:
+ </strong>
+ 6 types of units
+</p>
+
+<p><a href="https://py.checkio.org/mission/the-healers/publications/category/clear">View solutions</a></p>
+<p><a href="https://py.checkio.org/en/mission/the-healers">See the task on CheckiO</a></p>
