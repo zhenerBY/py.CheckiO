@@ -96,7 +96,8 @@ def fight(unit_1, unit_2, unit_1_2=Warrior(), unit_2_2=Warrior()):
         unit_1.health += damage * unit_1.vampirism / 100
         if unit_2.is_alive:
             damage = (unit_2.attack - unit_1.defense) if (unit_2.attack - unit_1.defense) > 0 else 0
-            seconddamage = (unit_2.secondattack - unit_1_2.defense) if (unit_2.secondattack - unit_1_2.defense) > 0 else 0
+            seconddamage = (unit_2.secondattack - unit_1_2.defense) if (
+                                                                               unit_2.secondattack - unit_1_2.defense) > 0 else 0
             unit_1.health -= damage
             if isinstance(unit_1_2, Healer):
                 unit_1_2.heal(unit_1)
@@ -120,6 +121,14 @@ class Army:
 
     def kill_unit(self):
         self.units.pop(0)
+
+    def kill_units(self):
+        num = 0
+        while num <= len(self.units) - 1:
+            if self.units[num].is_alive:
+                num += 1
+            else:
+                self.units.pop(num)
 
 
 class Battle:
@@ -147,6 +156,24 @@ class Battle:
                 return False
             if len(self.army2.units) == 0:
                 return True
+
+    def straight_fight(self, army1: Army, army2: Army):
+        self.army1 = army1
+        self.army2 = army2
+        while len(self.army1.units) > 0 and len(self.army2.units) > 0:
+            for battle in range(min(len(self.army1.units), len(self.army2.units))):
+                while self.army1.units[battle].is_alive and self.army2.units[battle].is_alive:
+                    self.army2.units[battle].health -= self.army1.units[battle].attack - \
+                                                       self.army2.units[battle].defense
+                    if self.army2.units[battle].is_alive:
+                        self.army1.units[battle].health -= self.army2.units[battle].attack - \
+                                                           self.army1.units[battle].defense
+            self.army1.kill_units()
+            self.army2.kill_units()
+        if len(self.army1.units) == 0:
+            return False
+        else:
+            return True
 
 
 if __name__ == '__main__':
@@ -447,11 +474,10 @@ if __name__ == '__main__':
     assert battle.fight(army_3, army_4) == True
     print("Coding complete? Let's try tests!")
 
-
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
-    
-    #fight tests
+    # These "asserts" using only for self-checking and not necessary for auto-testing
+
+    # fight tests
     chuck = Warrior()
     bruce = Warrior()
     carl = Knight()
@@ -483,11 +509,11 @@ if __name__ == '__main__':
     assert fight(ogre, adam) == True
     assert fight(freelancer, vampire) == True
     assert freelancer.is_alive == True
-    assert freelancer.health == 14    
+    assert freelancer.health == 14
     priest.heal(freelancer)
     assert freelancer.health == 16
 
-    #battle tests
+    # battle tests
     my_army = Army()
     my_army.add_units(Defender, 2)
     my_army.add_units(Healer, 1)
@@ -495,7 +521,7 @@ if __name__ == '__main__':
     my_army.add_units(Lancer, 2)
     my_army.add_units(Healer, 1)
     my_army.add_units(Warrior, 1)
-    
+
     enemy_army = Army()
     enemy_army.add_units(Warrior, 2)
     enemy_army.add_units(Lancer, 4)
@@ -517,15 +543,15 @@ if __name__ == '__main__':
     army_4.add_units(Lancer, 2)
 
     army_5 = Army()
-	army_5.add_units(Warrior, 10)
+    army_5.add_units(Warrior, 10)
 
-	army_6 = Army()
-	army_6.add_units(Warrior, 6)
-	army_6.add_units(Lancer, 5)
+    army_6 = Army()
+    army_6.add_units(Warrior, 6)
+    army_6.add_units(Lancer, 5)
 
-    battle = Battle()
+battle = Battle()
 
-    assert battle.fight(my_army, enemy_army) == False
-    assert battle.fight(army_3, army_4) == True
-    assert battle.straight_fight(army_5, army_6) == False
-    print("Coding complete? Let's try tests!")
+assert battle.fight(my_army, enemy_army) == False
+assert battle.fight(army_3, army_4) == True
+assert battle.straight_fight(army_5, army_6) == False
+print("Coding complete? Let's try tests!")
