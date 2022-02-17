@@ -160,16 +160,29 @@ class Battle:
     def straight_fight(self, army1: Army, army2: Army):
         self.army1 = army1
         self.army2 = army2
+        round = 0
+        round_fight = 0
         while len(self.army1.units) > 0 and len(self.army2.units) > 0:
+            battles_count = min(len(self.army1.units), len(self.army2.units))
             for battle in range(min(len(self.army1.units), len(self.army2.units))):
+                print(type(self.army1.units[battle]), self.army1.units[battle].health, 'vs',
+                      type(self.army2.units[battle]), self.army2.units[battle].health)
                 while self.army1.units[battle].is_alive and self.army2.units[battle].is_alive:
                     damage = self.army1.units[battle].attack - self.army2.units[battle].defense
                     self.army2.units[battle].health -= damage
-                    self.army1.units[battle].health += damage * self.army1.units[battle].vampirism / 100
+                    if self.army1.units[battle].health + damage * self.army1.units[battle].vampirism / 100 <\
+                            self.army1.units[battle].maxhealth:
+                        self.army1.units[battle].health += damage * self.army1.units[battle].vampirism / 100
+                    else:
+                        self.army1.units[battle].health = self.army1.units[battle].maxhealth
                     if self.army2.units[battle].is_alive:
                         damage = self.army2.units[battle].attack - self.army1.units[battle].defense
                         self.army1.units[battle].health -= damage
                         self.army2.units[battle].health += damage * self.army2.units[battle].vampirism / 100
+                round_fight += 1
+                print(type(self.army1.units[battle]), self.army1.units[battle].health, 'vs', type(self.army2.units[battle]), self.army2.units[battle].health)
+                print()
+            round += 1
             self.army1.kill_units()
             self.army2.kill_units()
         if len(self.army1.units) == 0:
