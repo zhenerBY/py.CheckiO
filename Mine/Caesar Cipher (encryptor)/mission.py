@@ -1,6 +1,20 @@
 def to_encrypt(text, delta):
     # replace this for solution
-    return text
+    alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+                'v', 'w', 'x', 'y', 'z']
+    newtext = ''
+    for letter in text:
+        if letter in alphabet:
+            if alphabet.index(letter) + delta > len(alphabet):
+                newtext += alphabet[(alphabet.index(letter) + delta) - len(alphabet)]
+            elif alphabet.index(letter) + delta < 0:
+                newtext += alphabet[(alphabet.index(letter) + delta) + len(alphabet)]
+            else:
+                newtext += alphabet[(alphabet.index(letter) + delta)]
+        else:
+            newtext += ' '
+
+    return newtext
 
 
 if __name__ == '__main__':

@@ -1,5 +1,11 @@
 def checkio(number: int) -> int:
-    return 1
+    b_number = ''
+    while number > 1:
+        number, digit = number//2, number%2
+        b_number += str(digit)
+    b_number += str(number)
+
+    return b_number.count('1')
 
 
 # These "asserts" using only for self-checking and not necessary for auto-testing

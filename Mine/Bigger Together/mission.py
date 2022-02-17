@@ -1,13 +1,27 @@
+from itertools import permutations
 from typing import List
 
 
 def bigger_together(ints: List[int]) -> int:
-    """
-        Returns difference between the largest and smallest values
-        that can be obtained by concatenating the integers together.
-    """
-    # you code here
-    return 0
+    # all = list(permutations(ints))
+    # maxx = int(''.join(map(str, max(all, key=lambda x: int(''.join(map(str, x)))))))
+    # minn = int(''.join(map(str, min(all, key=lambda x: int(''.join(map(str, x)))))))
+    # maxx = minn = int(''.join(map(str, ints)))
+    # for i in permutations(ints):
+    #     ii = int(''.join(map(str, i)))
+    #     if ii > maxx:
+    #         maxx = ii
+    #     if ii < minn:
+    #         minn = ii
+    # return maxx - minn
+    swap = 1
+    while swap:
+        swap = 0
+        for i in range(len(ints)-1):
+            if int(str(ints[i])+str(ints[i+1])) < int(str(ints[i+1])+str(ints[i])):
+                swap, ints[i], ints[i+1] = 1, ints[i+1], ints[i]
+    strints = [str(ints[i]) for i in range(len(ints))]
+    return int("".join(strints)) - int("".join(strints[::-1]))
 
 
 if __name__ == '__main__':

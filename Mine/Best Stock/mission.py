@@ -1,6 +1,15 @@
+from functools import reduce
+
+
 def best_stock(data: dict) -> str:
-    # your code here
-    return None
+    key = list(data.keys())[0]
+    val = data[key]
+    for i in data:
+        if val < data[i]:
+            val = data[i]
+            key = i
+    return key
+max()
 
 
 if __name__ == '__main__':

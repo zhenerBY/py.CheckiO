@@ -4,7 +4,13 @@ files:
   visible: true
   text: |
     def checkio(number: int) -> int:
-        return 1
+        b_number = ''
+        while number > 1:
+            number, digit = number//2, number%2
+            b_number += str(digit)
+        b_number += str(number)
+
+        return b_number.count('1')
 
 
     # These "asserts" using only for self-checking and not necessary for auto-testing
@@ -15,10 +21,16 @@ files:
         assert checkio(1022) == 9
         print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
   learner_created: false
-status: Unchecked
+status: Solved
 code: |
   def checkio(number: int) -> int:
-      return 1
+      b_number = ''
+      while number > 1:
+          number, digit = number//2, number%2
+          b_number += str(digit)
+      b_number += str(number)
+
+      return b_number.count('1')
 
 
   # These "asserts" using only for self-checking and not necessary for auto-testing
@@ -28,4 +40,4 @@ code: |
       assert checkio(1) == 1
       assert checkio(1022) == 9
       print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
-seconds_from_change: 9223372036854775807
+seconds_from_change: 2566
