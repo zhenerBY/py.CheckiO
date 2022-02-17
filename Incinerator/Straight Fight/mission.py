@@ -163,11 +163,13 @@ class Battle:
         while len(self.army1.units) > 0 and len(self.army2.units) > 0:
             for battle in range(min(len(self.army1.units), len(self.army2.units))):
                 while self.army1.units[battle].is_alive and self.army2.units[battle].is_alive:
-                    self.army2.units[battle].health -= self.army1.units[battle].attack - \
-                                                       self.army2.units[battle].defense
+                    damage = self.army1.units[battle].attack - self.army2.units[battle].defense
+                    self.army2.units[battle].health -= damage
+                    self.army1.units[battle].health += damage * self.army1.units[battle].vampirism / 100
                     if self.army2.units[battle].is_alive:
-                        self.army1.units[battle].health -= self.army2.units[battle].attack - \
-                                                           self.army1.units[battle].defense
+                        damage = self.army2.units[battle].attack - self.army1.units[battle].defense
+                        self.army1.units[battle].health -= damage
+                        self.army2.units[battle].health += damage * self.army2.units[battle].vampirism / 100
             self.army1.kill_units()
             self.army2.kill_units()
         if len(self.army1.units) == 0:
