@@ -23,4 +23,4 @@ code: "from typing import Tuple\n\ndef follow(instructions: str) -> Tuple[int, i
   \ for self-checking and not for an auto-testing\n    assert follow(\"fflff\") ==\
   \ (-1, 4)\n    assert follow(\"ffrff\") == (1, 4)\n    assert follow(\"fblr\") ==\
   \ (0, 0)\n    print(\"Coding complete? Click 'Check' to earn cool rewards!\")\n"
-seconds_from_change: 11147188
+seconds_from_change: 11212951

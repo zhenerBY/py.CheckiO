@@ -110,4 +110,4 @@ code: |
       assert text.show() == "At the very beginning "
 
       print("Coding complete? Let's try tests!")
-seconds_from_change: 261977
+seconds_from_change: 327741

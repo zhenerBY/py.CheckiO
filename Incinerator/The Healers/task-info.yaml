@@ -898,4 +898,4 @@ code: |
       assert battle.fight(my_army, enemy_army) == False
       assert battle.fight(army_3, army_4) == True
       print("Coding complete? Let's try tests!")
-seconds_from_change: 177531
+seconds_from_change: 243294

@@ -48,4 +48,4 @@ code: |
       assert list(remove_all_after([], 0)) == []
       assert list(remove_all_after([7, 7, 7, 7, 7, 7, 7, 7, 7], 7)) == [7]
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 1823778
+seconds_from_change: 1889541

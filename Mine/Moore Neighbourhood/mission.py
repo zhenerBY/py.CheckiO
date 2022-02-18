@@ -1,5 +1,20 @@
 def count_neighbours(grid, row, col):
-    return 0
+    rows = [i for i in range(row - 1, row + 2)]
+    cols = [i for i in range(col - 1, col + 2)]
+    neighbours = 0
+    for r in rows:
+        if r < 0 or r > len(grid) - 1:
+            pass
+        else:
+            for c in cols:
+                if c < 0 or c > len(grid[0]) - 1:
+                    pass
+                elif r == row and c == col:
+                    pass
+                else:
+                    if grid[r][c] == 1:
+                        neighbours += 1
+    return neighbours
 
 
 if __name__ == '__main__':

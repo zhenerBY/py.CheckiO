@@ -72,4 +72,4 @@ code: |
       assert ukraine_capital_3 is ukraine_capital_1
 
       print("Coding complete? Let's try tests!")
-seconds_from_change: 884016
+seconds_from_change: 949779

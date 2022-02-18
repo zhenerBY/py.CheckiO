@@ -173,4 +173,4 @@ code: |
       assert remote_control_2.show_time() == "01:3_"
       assert remote_control_3.show_time() == "01:40"
       print("Coding complete? Let's try tests!")
-seconds_from_change: 605434
+seconds_from_change: 671197
