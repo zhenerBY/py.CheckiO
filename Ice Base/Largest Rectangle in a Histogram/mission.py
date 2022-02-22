@@ -1,5 +1,9 @@
 
 def largest_histogram(histogram):
+    max_area = len(histogram)
+    for i in histogram:
+        l = i
+        r
     return max(histogram)
 
 
