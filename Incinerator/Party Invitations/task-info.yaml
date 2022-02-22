@@ -102,4 +102,4 @@ code: |
       assert nick.show_invite() == "Midnight Pub: Friday, 9:00 PM"
       assert chuck.show_invite() == "No party..."
       print("Coding complete? Let's try tests!")
-seconds_from_change: 595170
+seconds_from_change: 959789

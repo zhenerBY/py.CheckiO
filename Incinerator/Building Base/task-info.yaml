@@ -82,4 +82,4 @@ code: |
       assert b.volume() == 60, "Volume"
       assert b2.volume() == 30, "Volume2"
       assert str(b) == "Building(1, 2, 2, 3, 10)", "String"
-seconds_from_change: 951166
+seconds_from_change: 1315784

@@ -1,8 +1,21 @@
+from itertools import permutations
 from typing import List, Tuple
+
+def check_intersection(cir1:list, cir2:list) -> bool:
+    distance = ((cir1[0] - cir2[0]) ** 2 + (cir1[1] - cir2[1]) ** 2) ** 0.5
+    if distance <= cir1[2] + cir2[2] and max(cir1[2], cir2[2]) <= distance + min(cir1[2], cir2[2]):
+        return True
+    return False
 
 
 def count_chains(circles: List[Tuple[int, int, int]]) -> int:
-    # your code here
+    count = 0
+    tmpcount = 0
+    first = 0
+    last = len(circles)
+    for i in range(first, last):
+        for ii in range(first + 1, last):
+            pass
     return 0
 
 

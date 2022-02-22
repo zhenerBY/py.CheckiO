@@ -1,9 +1,21 @@
 def long_repeat(line: str) -> int:
-    """
-        length the longest substring that consists of the same char
-    """
-    # your code here
-    return 0
+    if len(line) <= 1:
+        return len(line)
+    count = 1
+    counttmp = 1
+    current_letter = line[0]
+    for i in range(1, len(line)):
+        if line[i] == current_letter:
+            counttmp += 1
+            continue
+        else:
+            if counttmp > count:
+                count = counttmp
+            counttmp = 1
+            current_letter = line[i]
+    if counttmp > count:
+        count = counttmp
+    return count
 
 
 if __name__ == '__main__':

@@ -1,5 +1,11 @@
 def count_words(text: str, words: set) -> int:
-    return 0
+    text = text.lower()
+    counter = 0
+    for word in words:
+        if word in text:
+            text.replace(word, '')
+            counter += 1
+    return counter
 
 
 if __name__ == '__main__':

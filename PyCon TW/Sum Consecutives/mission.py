@@ -1,6 +1,20 @@
 def sum_consecutives(a):
-    # your code here
-    return None
+    answer = []
+    tmpresult = 0
+    for i in range(len(a)):
+        if i == 0:
+            num = a[i]
+            tmpresult = a[i]
+        else:
+            if a[i] == num:
+                tmpresult += num
+            else:
+                num = a[i]
+                answer.append(tmpresult)
+                tmpresult = a[i]
+    if tmpresult != 0:
+        answer.append(tmpresult)
+    return answer
 
 
 if __name__ == '__main__':

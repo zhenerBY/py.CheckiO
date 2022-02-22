@@ -1,5 +1,9 @@
 def checkio(data):
-    # replace this for solution
+    if data == 0:
+        return ''
+    elif data < 5
+        return 'I' * data
+    elif
     return ""
 
 

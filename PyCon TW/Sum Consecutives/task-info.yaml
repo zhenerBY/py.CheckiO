@@ -4,8 +4,22 @@ files:
   visible: true
   text: |
     def sum_consecutives(a):
-        # your code here
-        return None
+        answer = []
+        tmpresult = 0
+        for i in range(len(a)):
+            if i == 0:
+                num = a[i]
+                tmpresult = a[i]
+            else:
+                if a[i] == num:
+                    tmpresult += num
+                else:
+                    num = a[i]
+                    answer.append(tmpresult)
+                    tmpresult = a[i]
+        if tmpresult != 0:
+            answer.append(tmpresult)
+        return answer
 
 
     if __name__ == '__main__':
@@ -21,11 +35,25 @@ files:
         assert list(sum_consecutives([])) == []
         print("Coding complete? Click 'Check' to earn cool rewards!")
   learner_created: false
-status: Unchecked
+status: Solved
 code: |
   def sum_consecutives(a):
-      # your code here
-      return None
+      answer = []
+      tmpresult = 0
+      for i in range(len(a)):
+          if i == 0:
+              num = a[i]
+              tmpresult = a[i]
+          else:
+              if a[i] == num:
+                  tmpresult += num
+              else:
+                  num = a[i]
+                  answer.append(tmpresult)
+                  tmpresult = a[i]
+      if tmpresult != 0:
+          answer.append(tmpresult)
+      return answer
 
 
   if __name__ == '__main__':
@@ -40,4 +68,4 @@ code: |
       assert list(sum_consecutives([1])) == [1]
       assert list(sum_consecutives([])) == []
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 9223372036854775807
+seconds_from_change: 19579

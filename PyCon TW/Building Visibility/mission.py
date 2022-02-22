@@ -1,13 +1,30 @@
 def checkio(buildings):
-    #for example
-    first_building = {
-        'x_south_west': buildings[0][0],
-        'y_south_west': buildings[0][1],
-        'x_north_east': buildings[0][2],
-        'y_north_east': buildings[0][3],
-        'height': buildings[0][4],
-    }
-    return 0
+    buildings_count = len(buildings)
+    current_building = 0
+    for house in buildings:
+        area = (house[2] - house[0]) * house[4]
+        area_remaining = area
+        for i in range(buildings_count):
+            if i == house:
+                continue
+            elif buildings[i][0] <= house[3]:
+                continue
+            elif buildings[i][2] > house[0] or buildings[i][0] < house[3]:
+                continue
+
+
+
+
+
+    # projection = []
+    # for house in buildings:
+    #     start = house[0]
+    #     end = house[2]
+    #     height = house[4]
+    #     order = min(house[1], house[3])
+    #     projection.append([start, end, height, order])
+    # projection.sort(key=lambda x: x[3])
+    # return projection
 
 
 if __name__ == '__main__':

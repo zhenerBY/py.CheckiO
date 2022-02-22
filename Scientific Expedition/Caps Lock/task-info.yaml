@@ -54,4 +54,4 @@ code: |
       assert caps_lock("Why are you asking me that?") == "Why RE YOU sking me thT?"
       assert caps_lock("Always wanted to visit Zambia.") == "AlwYS Wnted to visit ZMBI."
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 11211354
+seconds_from_change: 11575973

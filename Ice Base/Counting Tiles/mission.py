@@ -1,5 +1,5 @@
 def checkio(radius):
-    """count tiles"""
+    all = ((3 // 1 + 1 if 3 % 1 != 0 else 3 // 1) * 2) ** 2
     return [0, 0]
 
 

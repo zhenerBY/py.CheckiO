@@ -80,4 +80,4 @@ code: |
   Came whiffling through the tulgey wood,
   And burbled as it came!""", "noir") == [4, 16, 7, 16]
   print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 11232491
+seconds_from_change: 11597109

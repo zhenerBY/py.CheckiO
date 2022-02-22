@@ -23,14 +23,64 @@ files:
         assert remove_brackets("[(])") == "()"
         print("Coding complete? Click 'Check' to earn cool rewards!")
   learner_created: false
-status: Failed
-feedback:
-  message: Tests failed
-  time: Fri, 18 Feb 2022 12:44:42 UTC
+status: Unchecked
 code: |
+  closed = ')]}'
+  opened = '([{'
+
+
+  def check(line: str) -> str:
+      # while len(line) > 0 and line[-1] not in closed:
+      #     print(line)
+      #     print(line[-1])
+      #     line = line[:-1]
+      if len(line) <= 1:
+          return ''
+      # elif line[-1] in opened:
+      #     return check(line[:-1])
+      elif len(line) < 3:
+          return line
+      # print(line)
+      while len(line) > 0 and line[-1] not in closed:
+          # print(line)
+          # print(line[-1])
+          line = line[:-1]
+      if len(line) == 0:
+          return ''
+      print(line)
+      start = line.index(opened[closed.index(line[-1])])
+      return check(remove_brackets(line[:start])) + line[start] + check(line[start + 1: -1]) + line[-1]
+
+
   def remove_brackets(line: str) -> str:
-      # your code here
-      return line
+      newline = ''
+      leave = [False] * len(line)
+      for i in range(len(line) - 1, -1, -1):
+          if leave[i]:
+              continue
+          if line[i] not in closed:
+              continue
+          for ii in range(i - 1, -1, -1):
+              if line[ii] == opened[closed.index(line[i])] and not leave[ii]:
+                  leave[i] = True
+                  leave[ii] = True
+                  break
+      for i in range(len(line)):
+          if leave[i]:
+              newline += line[i]
+      return check(newline)
+      # return newline
+
+
+  # def check(line: str) -> str:
+  #     closed = ')]}'
+  #     opened = '([{'
+  #     if len(line) == 1:
+  #         return ''
+  #     elif len(line) < 3:
+  #         return line
+  #     start = line.index(opened[closed.index(line[-1])])
+  #     return line[start] + check(line[start + 1: -1]) + line[-1]
 
 
   if __name__ == "__main__":
@@ -47,4 +97,4 @@ code: |
       assert remove_brackets("") == ""
       assert remove_brackets("[(])") == "()"
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 9223372036854775807
+seconds_from_change: 349354

@@ -127,4 +127,4 @@ code: |
       assert client_2.total() == "Dumplings: 90, Compote: 100, Total: 190"
       assert client_3.total() == "Pizza: 100, Juice: 20, Total: 120"
       print("Coding complete? Let's try tests!")
-seconds_from_change: 1195264
+seconds_from_change: 1559882

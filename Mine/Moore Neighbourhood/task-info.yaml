@@ -80,4 +80,4 @@ code: |
       assert count_neighbours(((0, 0, 0),
                                (0, 1, 0),
                                (0, 0, 0),), 1, 1) == 0, "Single"
-seconds_from_change: 1982
+seconds_from_change: 366601
