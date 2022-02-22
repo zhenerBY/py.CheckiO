@@ -46,4 +46,4 @@ code: |
       assert count_words("Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
                          {"sum", "hamlet", "infinity", "anything"}) == 1, "Weird text"
       print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
-seconds_from_change: 8782
+seconds_from_change: 27574

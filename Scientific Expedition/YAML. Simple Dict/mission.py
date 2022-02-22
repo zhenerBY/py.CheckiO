@@ -1,6 +1,13 @@
 def yaml(a):
-    # your code here
-    return None
+    answer = {}
+    for i in a.split('\n'):
+        if i != '':
+            key, value = i.split(':')
+            value = value[1:]
+            if value.isdigit():
+                value = int(value)
+            answer[key] = value
+    return answer
 
 
 if __name__ == '__main__':

@@ -50,4 +50,4 @@ code: |
       assert almost_equal(simple_areas(2, 3), 6), "Rectangle"
       assert almost_equal(simple_areas(3, 5, 4), 6), "Triangle"
       assert almost_equal(simple_areas(1.5, 2.5, 2), 1.5), "Small triangle"
-seconds_from_change: 18880
+seconds_from_change: 37672

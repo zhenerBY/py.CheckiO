@@ -97,4 +97,4 @@ code: |
       assert remove_brackets("") == ""
       assert remove_brackets("[(])") == "()"
       print("Coding complete? Click 'Check' to earn cool rewards!")
-seconds_from_change: 349354
+seconds_from_change: 368146

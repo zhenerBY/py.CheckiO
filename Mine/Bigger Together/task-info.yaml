@@ -56,4 +56,4 @@ code: |
       assert bigger_together([0, 1]) == 9, "10 - 01"
       assert bigger_together([100]) == 0, "100 - 100"
       print('Done! I feel like you good enough to click Check')
-seconds_from_change: 438387
+seconds_from_change: 457179

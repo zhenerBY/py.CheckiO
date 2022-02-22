@@ -48,4 +48,4 @@ code: |
 
       assert most_frequent(["a", "a", "bi", "bi", "bi"]) == "bi"
       print("Done")
-seconds_from_change: 2342842
+seconds_from_change: 2361634
